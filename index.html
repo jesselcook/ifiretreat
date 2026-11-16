@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>IFI Staff Retreat 2027 · Lake Junaluska</title>
+<meta name="description" content="International Friendships (IFI) Staff Retreat at Lake Junaluska, June 14–17, 2027. See pricing and register.">
+<link rel="icon" type="image/png" href="ifi-logo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,700&family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  /* ===== EDIT THESE IN ONE PLACE: registration link is in the HTML (search REGISTER_URL) ===== */
+  :root{
+    --lake:#1d3a7a;
+    --pine:#4fa14a;
+    --mist:#e8f4f8;
+    --paper:#f8fbfd;
+    --sun:#f07022;
+    --ink:#14213a;
+    --muted:#4f6076;
+    --line:#cddbe5;
+    --serif:"Fraunces",Georgia,"Times New Roman",serif;
+    --sans:"Instrument Sans",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0;font-family:var(--sans);color:var(--ink);background:var(--paper);line-height:1.6;font-size:1.0625rem}
+  a{color:inherit}
+  :focus-visible{outline:3px solid var(--sun);outline-offset:3px}
+  .wrap{width:min(1040px,100% - 2.5rem);margin-inline:auto}
+
+  /* Hero */
+  .hero{position:relative;background:linear-gradient(180deg,#1d3a7a 0%,#2760a8 58%,#14a9c9 100%);color:#fff;overflow:hidden}
+  .hero .wrap{position:relative;z-index:2;padding:clamp(3rem,9vw,6.5rem) 0 clamp(10rem,24vw,17rem)}
+  .hero h1{font-family:var(--serif);font-weight:700;font-size:clamp(2.6rem,8vw,5.6rem);line-height:1.02;margin:0 0 1.25rem;letter-spacing:-.02em;max-width:14ch}
+  .hero .meta{font-size:clamp(1.1rem,2.4vw,1.45rem);margin:0 0 2rem;max-width:34ch;color:#e6f1fa}
+  .hero .meta strong{color:#fff;font-weight:600}
+  .sun{position:absolute;z-index:1;right:12%;bottom:30%;width:clamp(70px,12vw,150px);aspect-ratio:1;border-radius:50%;background:var(--sun);opacity:.95}
+  .ridges{position:absolute;z-index:1;left:0;right:0;bottom:-1px;width:100%;height:auto;display:block}
+  .btn{display:inline-block;background:var(--sun);color:#1b1500;font-weight:600;text-decoration:none;padding:.95rem 1.75rem;border-radius:999px;transition:transform .15s ease,background .15s ease}
+  .btn:hover{background:#f58a47;transform:translateY(-2px)}
+  .btn.dark{background:var(--lake);color:#fff}
+  .btn.dark:hover{background:var(--pine)}
+  .brand{display:flex;align-items:center;gap:.8rem;margin-bottom:clamp(2rem,6vw,3.5rem);font-weight:600;font-size:1.1rem}
+  .brand img{width:56px;height:56px;border-radius:50%;background:#fff;padding:2px}
+
+  /* Facts */
+  .facts{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:2rem;padding:3.5rem 0 1rem}
+  .facts h2{font-family:var(--serif);font-size:.95rem;font-weight:500;margin:0 0 .35rem;color:var(--muted)}
+  .facts p{margin:0;font-family:var(--serif);font-size:1.7rem;font-weight:700;line-height:1.2;color:var(--lake)}
+
+  /* Pricing */
+  section.pricing{padding:3rem 0 4rem}
+  h2.title{font-family:var(--serif);font-size:clamp(1.9rem,4vw,2.6rem);line-height:1.15;margin:0 0 .6rem;color:var(--lake);letter-spacing:-.01em}
+  .lede{color:var(--muted);margin:0 0 2rem;max-width:60ch}
+  .status{display:flex;gap:.75rem;align-items:center;background:var(--mist);border-left:5px solid var(--sun);padding:.9rem 1.1rem;border-radius:6px;margin-bottom:1.75rem;font-weight:500}
+  .table-scroll{overflow-x:auto;border:1px solid var(--line);border-radius:12px;background:#fff}
+  table{width:100%;border-collapse:collapse;min-width:520px;text-align:center}
+  caption{position:absolute;left:-9999px}
+  th,td{padding:1rem .75rem}
+  thead th{vertical-align:bottom;font-weight:600;border-bottom:1px solid var(--line);background:var(--mist)}
+  thead th span{display:block}
+  thead .tier{font-family:var(--serif);font-size:1.15rem;color:var(--lake)}
+  thead .date{font-size:.9rem;font-weight:400;color:var(--muted)}
+  tbody th{text-align:left;font-weight:600;color:var(--lake)}
+  tbody tr+tr th,tbody tr+tr td{border-top:1px solid var(--line)}
+  td{font-variant-numeric:tabular-nums;font-size:1.25rem}
+  th[scope=col]:first-child{text-align:left}
+  /* current tier highlight, set by script */
+  .current{background:#fff0e4}
+  thead th.current{background:var(--sun);color:#1b1500}
+  thead th.current .date{color:#4a2300}
+  td.current{font-weight:600}
+  .note{font-size:.95rem;color:var(--muted);margin-top:1rem}
+
+  /* Closing call to action */
+  .cta{background:var(--lake);color:#fff;text-align:center;padding:4rem 0}
+  .cta h2{font-family:var(--serif);font-size:clamp(1.8rem,4vw,2.5rem);margin:0 0 .75rem}
+  .cta p{margin:0 auto 1.75rem;max-width:46ch;color:#d6e4f5}
+  footer{padding:1.75rem 0;text-align:center;color:var(--muted);font-size:.9rem}
+
+  @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.btn{transition:none}}
+  @media (max-width:520px){th,td{padding:.8rem .5rem}td{font-size:1.1rem}}
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="sun" aria-hidden="true"></div>
+  <div class="wrap">
+    <div class="brand"><img src="ifi-logo.png" alt="IFI logo" width="56" height="56"><span>International Friendships</span></div>
+    <h1>IFI Staff Retreat 2027</h1>
+    <p class="meta"><strong>Lake Junaluska</strong><br>June 14–17, 2027</p>
+    <!-- REGISTER_URL: replace the href below with your Planning Center registration link -->
+    <a class="btn" href="https://REPLACE-WITH-YOUR-PLANNING-CENTER-LINK.planningcenteronline.com/registrations" id="register">Register now</a>
+  </div>
+  <svg class="ridges" viewBox="0 0 1440 300" preserveAspectRatio="none" aria-hidden="true">
+    <path d="M0 150 L120 90 L240 140 L380 60 L520 130 L650 80 L800 150 L940 70 L1080 130 L1220 85 L1340 130 L1440 100 L1440 300 L0 300Z" fill="#14a9c9" opacity=".6"/>
+    <path d="M0 200 L160 140 L300 190 L450 120 L600 185 L760 130 L900 190 L1060 125 L1200 185 L1330 150 L1440 180 L1440 300 L0 300Z" fill="#22438a"/>
+    <path d="M0 255 Q360 225 720 250 T1440 240 L1440 300 L0 300Z" fill="#1d3a7a"/>
+  </svg>
+</header>
+
+<main>
+  <div class="wrap">
+    <div class="facts">
+      <div><h2>Location</h2><p>Lake Junaluska</p></div>
+      <div><h2>Dates</h2><p>June 14–17, 2027</p></div>
+      <div><h2>Registration</h2><p>Online, through Planning Center</p></div>
+    </div>
+
+    <section class="pricing" id="pricing" aria-labelledby="pricing-title">
+      <h2 class="title" id="pricing-title">Pricing and deadlines</h2>
+      <p class="lede">The price depends on your room type and the date you register. Register early to pay less.</p>
+
+      <div class="status" id="status" role="status"></div>
+
+      <div class="table-scroll">
+        <table id="price-table">
+          <caption>Retreat price per person by occupancy and registration deadline</caption>
+          <thead>
+            <tr>
+              <th scope="col">Occupancy</th>
+              <th scope="col" data-tier="1"><span class="tier">Early Bird</span><span class="date">Register by Feb 15</span></th>
+              <th scope="col" data-tier="2"><span class="tier">Second Level</span><span class="date">Register by Apr 1</span></th>
+              <th scope="col" data-tier="3"><span class="tier">Final Price</span><span class="date">Register by May 5</span></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><th scope="row">Single</th><td data-tier="1">$465</td><td data-tier="2">$495</td><td data-tier="3">$545</td></tr>
+            <tr><th scope="row">Double</th><td data-tier="1">$290</td><td data-tier="2">$315</td><td data-tier="3">$355</td></tr>
+            <tr><th scope="row">Triple</th><td data-tier="1">$255</td><td data-tier="2">$275</td><td data-tier="3">$310</td></tr>
+            <tr><th scope="row">Quad</th><td data-tier="1">$235</td><td data-tier="2">$255</td><td data-tier="3">$290</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="note">Single, double, triple and quad refer to how many people share a room.</p>
+    </section>
+  </div>
+
+  <section class="cta" aria-labelledby="cta-title">
+    <div class="wrap">
+      <h2 id="cta-title">Ready to join us at the lake?</h2>
+      <p>Registration and payment are handled through Planning Center.</p>
+      <a class="btn" href="https://REPLACE-WITH-YOUR-PLANNING-CENTER-LINK.planningcenteronline.com/registrations" id="register2">Register now</a>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">International Friendships, Inc. (IFI) · Staff Retreat 2027 · Lake Junaluska · June 14–17</div>
+</footer>
+
+<script>
+  // Highlights the tier that applies today, based on the deadlines (all in 2027).
+  // To change a deadline, edit the date here and the matching label in the table.
+  (function () {
+    var deadlines = [
+      { tier: 1, end: new Date(2027, 1, 15, 23, 59, 59), name: "Early Bird", label: "February 15" },
+      { tier: 2, end: new Date(2027, 3, 1, 23, 59, 59),  name: "Second Level", label: "April 1" },
+      { tier: 3, end: new Date(2027, 4, 5, 23, 59, 59),  name: "Final Price", label: "May 5" }
+    ];
+    var now = new Date();
+    var active = null;
+    for (var i = 0; i < deadlines.length; i++) {
+      if (now <= deadlines[i].end) { active = deadlines[i]; break; }
+    }
+    var status = document.getElementById("status");
+    if (active) {
+      document.querySelectorAll('[data-tier="' + active.tier + '"]').forEach(function (el) {
+        el.classList.add("current");
+      });
+      status.textContent = "Right now: " + active.name + " pricing, through " + active.label + ".";
+    } else {
+      status.textContent = "The final price deadline (May 5) has passed. Contact the retreat organizers about registering.";
+    }
+  })();
+</script>
+</body>
+</html>
